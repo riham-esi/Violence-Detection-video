@@ -16,7 +16,7 @@ __pycache__/
 venv/
 env/
 .Python
-
+data/test videos/
 # ===========================================
 # IDEs and system files
 # ===========================================
