@@ -77,12 +77,47 @@ Violence-Detection-video/
 
 ## Installation and Usage 
 ```bash
+## 🔥 Usage
+
+You can use the Violence Detection app in **two ways**:
+
+---
+
+### **Method 1 — Directly via Hugging Face Spaces**
+
+- The model is deployed online using Hugging Face Spaces, allowing users to test it directly without any local setup.
+
+[🔗 Open the App here ] https://huggingface.co/spaces/rihammsd10/violence-detection-app
+
+- Simply upload a video and the model will return the **Violence Probability** and **Non-Violence Probability**.
+
+---
+
+### **Method 2 — Run Locally**
+
+1. Clone the GitHub repository:
+
 git clone https://github.com/riham-esi/Violence-Detection-video.git
 cd Violence-Detection
+
+2. Install required packages:
+
 pip install -r requirements.txt
+
+3. Download the pretrained model (hybrid_model3.pth) from:
+Hugging Face: 🔗 https://huggingface.co/rihammsd10/hybrid_model/blob/main/hybrid_model3.pth
+
+Kaggle model link: 🔗 https://www.kaggle.com/models/messaoudiriham/best-hybrid-model
+4. Place the hybrid_model3.pth file in the models/ folder:
+Violence-Detection/
+│
+├── models/
+│   └── hybrid_model3.pth
+
+5. Run the Streamlit app:
 streamlit run app/app.py
- - Upload a video.
- - Get violence probability prediction.
+
+Upload a video locally and view the predictions.
 ```
 ## Training (Optional)
 ```bash
