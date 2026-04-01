@@ -1,3 +1,15 @@
+---
+title: Violence Detection App
+emoji: "🎬"
+colorFrom: "blue"
+colorTo: "green"
+sdk: "streamlit"
+sdk_version: "1.26.0"   # adjust to your Streamlit version
+python_version: "3.10"
+app_file: "app/app.py"
+pinned: false
+---
+
 # Violence Detection in Videos 
 
 A deep learning project for **video violence detection** using a hybrid model combining **3D CNN (ResNet-18)** for spatial-temporal feature extraction and a **Transformer** for temporal modeling. Includes a **Streamlit app** for uploading videos and classifying them as **Violent** or **Non-Violent** in real-time.
