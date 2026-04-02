@@ -25,36 +25,40 @@ A deep learning project for **video violence detection** using a hybrid model co
 
 ---
 
-##  Project Structure
+## 📁 Project Structure
+
 Violence-Detection-video/
 │
 ├── app/
-│ └── app.py # Streamlit web app
-│ └── __init__.py
+│   ├── app.py                 # Streamlit web application
+│   └── __init__.py
+│
 ├── data/
-│ └── test videos # videos used for testing 
+│   └── test_videos/           # Sample videos for testing
+│
 ├── models/
-│ ├── hybrid_model3.pth # Trained model checkpoint
-│ └── model.py # Hybrid model definition
-│ ├── vit_baseline.pth # Trained vit baseline model
-│ └── vit_baseline_ResNet.pth # Trained ResNet model 
-│ └── __init__.py
+│   ├── hybrid_model3.pth      # Final trained hybrid model
+│   └── model.py               # Hybrid model definition
+│
 ├── src/
-│ └── video_utils.py # Video preprocessing utilities
-│ └── load_model.py # Load trained model helper
-│ └── __init__.py
+│   ├── video_utils.py         # Video preprocessing utilities
+│   ├── load_model.py          # Model loading helper
+│   └── __init__.py
+│
 ├── configs/
-│ └── config.py # Dataset, preprocessing, and training configs
-│ └── __init__.py
+│   ├── config.py              # Dataset, preprocessing, training configs
+│   └── __init__.py
+│
 ├── notebooks/
-│ ├── 01-1-data-preparation-and-vit-model-baseline(ResNet).ipynb
-│ └── 01-2-data-preparation-and-vit-model-baseline(simple).ipynb
-│ ├── 02-training-pipeline.ipynb
-│ └── 02-training-pipeline-evaluation.ipynb
-├── requirements.txt
-└── README.md
-└── .gitignore
-└── LICENSE 
+│   ├── 01-1-data-preparation-and-vit-model-baseline(simple).ipynb
+│   ├── 01-2-data-preparation-and-vit-model-baseline(ResNet ).ipynb
+│   ├── 02-training-pipeline-evaluation.ipynb
+│   └── 02-training-pipeline.ipynb
+│
+├── requirements.txt           # Dependencies
+├── README.md                  # Project documentation
+├── .gitignore
+└── LICENSE
 
 ---
 
