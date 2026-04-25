@@ -70,10 +70,27 @@ Violence-Detection-video/
 ---
 
 ## Model Architecture
-- **Backbone**: `r3d_18` (3D ResNet-18), removes classifier, frozen except optional last block.
-- **Temporal Transformer**: 3 layers, `hidden_dim=512`, `nhead=8`.
-- **Classification Head**: Linear layer outputs single logit with `BCEWithLogitsLoss`.
-- **Forward pass**: `[B, F, C, H, W] -> Backbone -> Transformer -> Classifier -> logit`
+
+- **Backbone**: `r3d_18` (3D ResNet-18), pretrained on video data.  
+  The spatial-temporal feature extractor is partially frozen, with the last residual block (`layer4`) fine-tuned.
+
+- **Temporal Modeling**:
+  A Transformer Encoder is used to model temporal dependencies:
+  - 2 layers
+  - hidden dimension = 512
+  - 4 attention heads
+  - feedforward dimension = 1024
+  - sinusoidal positional encoding
+
+- **Temporal Aggregation**:
+  A learned attention pooling mechanism replaces simple averaging, allowing the model to focus on the most informative frames.
+
+- **Dual Heads**:
+  - **Classification head** → predicts violence probability (logit)
+  - **Uncertainty head** → estimates prediction confidence
+
+- **Forward pass**:
+  `[B, F, C, H, W] → 3D CNN → temporal features → Transformer → attention pooling → classification + uncertainty`
 
 > Note: Current model repeats backbone features across frames; works fine for deployment.
 
@@ -128,8 +145,7 @@ Upload a video locally and view the predictions.
 Use the notebooks in notebooks/:
 01-1-data-preparation-and-vit-model-baseline(simple).ipynb → Prepare and cache videos and train simple model
 01-2-data-preparation-and-vit-model-baseline(ResNet).ipynb → Prepare and cache videos and train ResNet model.
-02-training-pipeline.ipynb → Train or fine-tune the model with pretrained hybrid model.
-02-training-pipeline-evaluation.ipynb →Add evaluation to the final model trained 
+02-training-pipeline-evaluation.ipynb →  Train or fine-tune the model with pretrained hybrid model with evaluation 
 ```
 ---
 
