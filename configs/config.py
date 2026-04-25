@@ -13,7 +13,7 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 # Video preprocessing
 # =====================
 
-NUM_FRAMES =8
+NUM_FRAMES =16
 FRAME_SIZE = (224,224) 
 IMAGENET_MEAN = [0.485, 0.456, 0.406]
 IMAGENET_STD = [0.229, 0.224, 0.225]

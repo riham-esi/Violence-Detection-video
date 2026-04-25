@@ -66,11 +66,13 @@ if uploaded_file is not None:
                 try:
                     # Load frames and prepare tensor
                     video_tensor = load_video_frames(video_path).unsqueeze(0).to(device)
-
+                    THRESHOLD = 0.65
                     # Forward pass
                     with torch.no_grad():
-                        output = model(video_tensor)
-                        prob = torch.sigmoid(output).item()
+                        logits, uncertainty = model(video_tensor)
+                        prob = torch.sigmoid(logits).item()
+                        uncertainty_score = uncertainty.item()
+                        
                         violence_prob = prob * 100
                         non_violence_prob = 100 - violence_prob
 
@@ -80,8 +82,11 @@ if uploaded_file is not None:
                     st.markdown("**Non-Violence Probability**")
                     st.progress(non_violence_prob / 100)
 
+                    st.markdown(f"**Model probability:** {prob:.4f}")
+                    st.markdown(f"**Decision threshold:** {THRESHOLD:.2f}")
+                    st.markdown(f"**Uncertainty score:** {uncertainty_score:.4f}")
                     # Highlight main prediction
-                    if violence_prob > 50:
+                    if prob > THRESHOLD:
                         st.error("⚠️ This video is  violent.")
                     else:
                         st.success("✅ This video is  non-violent.")
